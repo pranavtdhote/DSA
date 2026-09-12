@@ -1,17 +1,37 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        if (nums.empty()) return 0;
-
-        int i = 1;
-
-        for (int j = 1; j < nums.size(); j++) {
-            if (nums[j] != nums[i - 1]) {
-                nums[i] = nums[j];
-                i++;
+        int n = nums.size();
+        
+        if (n == 0) return 0;
+        
+        int count = 1;
+        
+        for (int i = 0; i < n - 1; i++) {
+            if (nums[i] != nums[i + 1]) {
+                count++;
             }
         }
 
-        return i;        
+        vector<int> arr2(count);
+        
+        cout << count << endl;
+        
+        arr2[0] = nums[0];
+        
+        int j = 1;
+        
+        for (int i = 0; i < n - 1; i++) {
+            if (nums[i] != nums[i + 1]) {
+                arr2[j] = nums[i + 1];
+                j++;
+            }
+        }
+        
+        for (int i = 0; i < count; i++) {
+            nums[i] = arr2[i];
+        }
+        
+        return count;
     }
 };

@@ -48,7 +48,7 @@ public:
             for (int b = cost; b <= budget; b++) {
                 if (dp[b - cost] != NEG) {
                     dp[b] = max(dp[b],
-                              dp[b - cost] + 1);
+                    dp[b - cost] + 1);
                 }
             }
         }
